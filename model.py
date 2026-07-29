@@ -19,6 +19,11 @@ def load_training_data(path: Path) -> tuple[pd.DataFrame, pd.Series]:
     """Load the full synthetic dataset and prepare features and labels."""
     data = pd.read_csv(path)
 
+    data = data.copy()
+    data["high_amount"] = (data["amount"] > 900).astype(int)
+    data["new_card"] = (data["card_age_days"] < 30).astype(int)
+    data["high_velocity"] = (data["velocity"] > 2).astype(int)
+
     feature_frame = data.drop(columns=["transaction_id", "customer_id", "is_fraud"])
     categorical_columns = ["merchant_category", "country", "device_type"]
     encoded_features = pd.get_dummies(feature_frame, columns=categorical_columns, drop_first=False)

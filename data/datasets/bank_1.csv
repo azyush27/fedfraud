@@ -30,7 +30,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 1106,1723,5.0,Grocery,6,1,US,desktop,286.0,1,0,0,0,0,0
 1113,1770,6.84,Utilities,14,3,US,desktop,110.2,1,0,0,0,0,0
 1119,3892,5.0,Retail,15,4,US,desktop,318.1,0,0,0,0,0,0
-1123,2075,5.0,Retail,15,4,US,desktop,226.3,2,0,0,0,0,0
+1123,2075,5.0,Retail,15,4,US,desktop,226.3,2,0,0,0,0,1
 1129,3224,5.0,Grocery,15,2,US,desktop,98.1,1,0,0,0,0,0
 1159,2536,5.0,Grocery,11,0,US,desktop,134.4,1,0,0,0,0,0
 1171,3515,9.83,Retail,10,2,US,desktop,214.9,1,0,0,0,0,0
@@ -47,7 +47,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 1612,1574,5.0,Grocery,15,0,US,desktop,141.6,1,0,0,0,0,0
 1619,1485,5.0,Retail,10,2,US,desktop,597.1,1,0,0,0,0,0
 1650,4344,5.0,Grocery,14,3,US,desktop,152.9,1,0,0,0,0,0
-1720,3068,5.0,Grocery,9,2,US,desktop,41.1,1,0,0,0,0,0
+1720,3068,5.0,Grocery,9,2,US,desktop,41.1,1,0,0,0,0,1
 1774,2576,5.59,Grocery,21,0,US,desktop,108.7,2,0,0,0,0,0
 1819,1541,5.0,Retail,14,4,US,desktop,159.0,2,0,0,0,0,0
 1827,1420,5.0,Retail,21,3,US,desktop,169.8,0,0,0,0,0,0
@@ -568,7 +568,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 17539,3493,5.0,Grocery,22,2,US,desktop,90.2,0,0,0,0,0,0
 17573,1940,5.0,Health,7,0,US,desktop,423.4,0,0,0,0,0,0
 17580,4275,5.0,Retail,13,2,US,desktop,45.7,2,0,0,0,0,0
-17616,4154,5.0,Retail,6,1,US,desktop,284.8,1,0,0,0,0,0
+17616,4154,5.0,Retail,6,1,US,desktop,284.8,1,0,0,0,0,1
 17646,3560,8.33,Retail,17,2,US,desktop,157.6,1,0,0,0,0,0
 17653,1191,5.0,Retail,14,4,US,desktop,438.3,1,0,0,0,0,0
 17708,3389,5.0,Grocery,6,0,US,desktop,106.7,1,0,0,0,0,0
@@ -887,7 +887,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 15019,1123,5.0,Grocery,20,5,US,desktop,133.5,0,0,1,0,0,0
 15035,2866,5.0,Retail,7,5,US,desktop,181.9,1,0,1,0,0,0
 15203,1408,5.0,Retail,12,6,US,desktop,225.3,0,0,1,0,0,0
-15332,2803,5.0,Grocery,12,6,US,desktop,540.3,1,0,1,0,0,0
+15332,2803,5.0,Grocery,12,6,US,desktop,540.3,1,0,1,0,0,1
 15499,3277,5.0,Retail,20,5,US,desktop,129.9,2,0,1,0,0,0
 15537,2046,5.0,Grocery,6,6,US,desktop,61.0,1,0,1,0,0,0
 15608,2933,5.0,Retail,20,5,US,desktop,97.5,1,0,1,0,0,0
@@ -2816,7 +2816,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 13069,3005,5.0,Grocery,15,6,US,mobile,40.6,2,0,1,0,0,0
 13071,3030,5.0,Retail,15,1,DE,desktop,222.7,0,0,0,0,0,0
 13080,3971,5.0,Grocery,6,5,US,mobile,203.2,1,0,1,0,0,0
-13081,2091,5.0,Health,14,1,GB,desktop,191.0,2,0,0,0,0,1
+13081,2091,5.0,Health,14,1,GB,desktop,191.0,2,0,0,0,0,0
 13124,2410,5.0,Utilities,22,5,US,tablet,49.2,0,0,1,0,0,0
 13162,4282,5.0,Grocery,17,6,US,mobile,121.2,1,0,1,0,0,1
 13179,2314,5.0,Grocery,6,4,DE,desktop,301.8,1,0,0,0,0,0
@@ -3189,7 +3189,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 8874,4314,5.0,Grocery,11,3,US,mobile,170.6,1,0,0,0,1,0
 8976,1448,5.0,Grocery,19,4,US,mobile,278.1,1,0,0,0,1,0
 9202,3492,5.0,Grocery,11,1,US,mobile,245.8,0,0,0,0,1,0
-9453,3840,5.0,Grocery,12,1,US,mobile,207.6,2,0,0,0,1,1
+9453,3840,5.0,Grocery,12,1,US,mobile,207.6,2,0,0,0,1,0
 9506,2456,5.0,Grocery,17,0,US,mobile,641.8,1,0,0,0,1,0
 9682,4515,5.0,Grocery,11,4,US,mobile,91.7,1,0,0,0,1,0
 9726,2085,5.0,Retail,17,1,US,mobile,213.1,0,0,0,0,1,0
@@ -3555,7 +3555,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 945,1517,5.0,Grocery,11,1,US,desktop,22.9,2,0,0,0,1,0
 1757,2392,5.0,Retail,20,2,US,desktop,28.3,1,0,0,0,1,0
 1793,2375,5.0,Retail,11,0,US,desktop,17.1,1,0,0,0,1,0
-5947,2045,5.0,Retail,19,3,US,desktop,4.5,1,0,0,0,1,1
+5947,2045,5.0,Retail,19,3,US,desktop,4.5,1,0,0,0,1,0
 9003,3692,5.0,Retail,7,0,US,desktop,11.2,2,0,0,0,1,0
 9358,1310,5.0,Grocery,17,0,US,desktop,10.1,2,0,0,0,1,0
 10805,3499,5.0,Grocery,14,2,US,desktop,8.3,2,0,0,0,1,0
@@ -3829,7 +3829,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 14365,2540,5.0,Health,8,1,US,mobile,2.8,2,0,0,0,0,0
 14383,2904,5.0,Grocery,17,0,US,mobile,28.9,1,0,0,0,0,0
 14480,4385,8.91,Utilities,12,5,CA,desktop,248.9,0,0,1,0,0,0
-14516,4632,5.0,Grocery,8,1,US,mobile,25.2,2,0,0,0,0,1
+14516,4632,5.0,Grocery,8,1,US,mobile,25.2,2,0,0,0,0,0
 14540,2431,6.79,Grocery,9,5,BR,desktop,157.2,1,0,1,0,0,0
 14610,3125,5.0,Retail,15,0,US,mobile,2.7,0,0,0,0,0,0
 14713,4304,5.0,Grocery,17,5,GB,desktop,106.4,2,0,1,0,0,0
@@ -3887,7 +3887,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 17291,4876,5.0,Grocery,20,0,US,mobile,9.2,0,0,0,0,0,0
 17348,1729,5.0,Retail,13,2,US,mobile,11.3,1,0,0,0,0,0
 17423,2875,5.0,Grocery,18,6,AU,desktop,143.5,1,0,1,0,0,0
-17429,2543,5.0,Retail,6,2,US,mobile,27.7,0,0,0,0,0,1
+17429,2543,5.0,Retail,6,2,US,mobile,27.7,0,0,0,0,0,0
 17450,3027,5.0,Retail,9,6,AU,desktop,195.3,0,0,1,0,0,0
 17586,2323,5.0,Health,17,6,CA,desktop,37.2,2,0,1,0,0,0
 17606,1511,5.0,Grocery,22,3,US,mobile,26.5,1,0,0,0,0,0
@@ -3897,9 +3897,9 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 17776,3394,5.0,Grocery,18,5,BR,desktop,68.1,1,0,1,0,0,0
 17813,4647,5.0,Grocery,15,4,US,mobile,1.1,0,0,0,0,0,1
 17824,3002,5.0,Retail,19,5,FR,desktop,228.5,2,0,1,0,0,0
-17929,3593,5.0,Grocery,20,6,GB,desktop,96.3,1,0,1,0,0,1
+17929,3593,5.0,Grocery,20,6,GB,desktop,96.3,1,0,1,0,0,0
 17995,2172,7.83,Grocery,20,4,US,tablet,10.3,0,0,0,0,0,0
-18130,1780,5.0,Grocery,22,3,US,mobile,13.4,0,0,0,0,0,1
+18130,1780,5.0,Grocery,22,3,US,mobile,13.4,0,0,0,0,0,0
 18138,3702,5.0,Retail,17,6,DE,desktop,221.1,2,0,1,0,0,0
 18140,2388,5.0,Grocery,17,3,US,tablet,5.5,1,0,0,0,0,0
 18157,3993,5.0,Grocery,14,6,DE,desktop,74.3,1,0,1,0,0,1
@@ -4175,12 +4175,12 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 7857,1396,5.0,Online,7,3,US,desktop,133.1,0,0,0,0,0,0
 7943,3291,5.0,Food Delivery,19,3,US,desktop,72.2,1,0,0,0,0,0
 8047,2697,5.0,Food Delivery,12,3,US,desktop,52.5,0,0,0,0,0,0
-8100,3870,5.0,Food Delivery,19,0,US,desktop,422.3,1,0,0,0,0,1
+8100,3870,5.0,Food Delivery,19,0,US,desktop,422.3,1,0,0,0,0,0
 8139,4528,5.0,Online,16,3,US,desktop,100.0,1,0,0,0,0,0
 8219,2957,5.0,Entertainment,11,0,US,desktop,79.8,0,0,0,0,0,1
 8255,4222,5.0,Entertainment,7,4,US,desktop,98.9,0,0,0,0,0,0
 8345,2203,5.0,Food Delivery,10,1,US,desktop,162.0,1,0,0,0,0,1
-8370,4675,5.0,Entertainment,11,3,US,desktop,724.5,1,0,0,0,0,1
+8370,4675,5.0,Entertainment,11,3,US,desktop,724.5,1,0,0,0,0,0
 8402,1820,6.42,Online,16,3,US,desktop,138.7,2,0,0,0,0,0
 8423,1954,5.0,Food Delivery,7,0,US,desktop,336.6,0,0,0,0,0,0
 8425,1264,5.0,Travel,17,3,US,desktop,60.4,0,0,0,0,0,0
@@ -4256,7 +4256,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 10632,2584,5.0,Travel,7,0,US,desktop,34.6,0,0,0,0,0,0
 10637,1143,5.0,Travel,8,3,US,desktop,302.0,1,0,0,0,0,0
 10645,4406,5.0,Food Delivery,10,0,US,desktop,1106.4,2,0,0,0,0,0
-10654,3409,5.0,Travel,19,3,US,desktop,63.0,0,0,0,0,0,1
+10654,3409,5.0,Travel,19,3,US,desktop,63.0,0,0,0,0,0,0
 10719,2149,5.0,Online,8,0,US,desktop,76.4,2,0,0,0,0,0
 10789,1476,5.0,Food Delivery,19,4,US,desktop,87.7,1,0,0,0,0,0
 10809,1484,5.0,Food Delivery,18,2,US,desktop,620.7,2,0,0,0,0,0
@@ -4346,7 +4346,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 13657,3905,5.0,Online,13,4,US,desktop,57.9,2,0,0,0,0,0
 13683,3038,5.0,Travel,10,3,US,desktop,62.3,0,0,0,0,0,1
 13780,3512,5.0,Food Delivery,18,0,US,desktop,211.9,1,0,0,0,0,1
-13790,1617,5.0,Retail,16,6,US,tablet,107.9,0,0,1,0,1,1
+13790,1617,5.0,Retail,16,6,US,tablet,107.9,0,0,1,0,1,0
 13935,4408,12.43,Travel,15,2,US,desktop,795.6,1,0,0,0,0,0
 13937,3095,5.0,Food Delivery,11,1,US,desktop,315.8,2,0,0,0,0,0
 13948,4804,5.0,Health,19,5,US,tablet,376.4,1,0,1,0,1,1
@@ -4401,7 +4401,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 15872,2222,5.0,Food Delivery,19,1,US,desktop,299.7,2,0,0,0,0,0
 15936,4393,5.0,Entertainment,19,0,US,desktop,177.6,1,0,0,0,0,0
 15978,3664,5.46,Online,6,4,US,desktop,67.4,0,0,0,0,0,0
-16052,2948,5.0,Entertainment,10,3,US,desktop,283.3,0,0,0,0,0,1
+16052,2948,5.0,Entertainment,10,3,US,desktop,283.3,0,0,0,0,0,0
 16061,1065,5.0,Online,8,4,US,desktop,255.5,0,0,0,0,0,0
 16131,2494,5.0,Food Delivery,7,3,US,desktop,110.0,1,0,0,0,0,0
 16135,2780,5.0,Food Delivery,19,2,US,desktop,73.0,0,0,0,0,0,0
@@ -4522,7 +4522,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 19839,4146,6.69,Grocery,18,5,US,mobile,451.8,0,0,1,0,1,0
 19870,4510,5.0,Entertainment,7,0,US,desktop,118.3,1,0,0,0,0,0
 19946,4937,5.0,Entertainment,9,2,US,desktop,68.6,2,0,0,0,0,0
-19976,4256,5.0,Food Delivery,20,2,US,desktop,138.5,0,0,0,0,0,1
+19976,4256,5.0,Food Delivery,20,2,US,desktop,138.5,0,0,0,0,0,0
 20,2801,5.0,Grocery,16,2,AU,desktop,189.5,1,0,0,0,1,0
 124,2884,5.0,Retail,17,1,GB,desktop,731.2,0,0,0,0,1,1
 1376,4836,5.0,Grocery,15,3,AU,desktop,69.1,1,0,0,0,1,0
@@ -4581,7 +4581,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 15645,4727,5.0,Retail,22,0,DE,desktop,86.2,1,0,0,0,1,0
 15908,1234,5.0,Retail,12,4,AU,desktop,38.4,2,0,0,0,1,0
 15927,4580,5.0,Health,20,3,CA,desktop,484.9,2,0,0,0,1,0
-15946,3099,5.0,Grocery,6,0,JP,desktop,724.6,0,0,0,0,1,1
+15946,3099,5.0,Grocery,6,0,JP,desktop,724.6,0,0,0,0,1,0
 16446,2311,5.0,Grocery,22,1,CA,desktop,369.0,0,0,0,0,1,0
 16631,3031,5.0,Grocery,7,1,DE,desktop,379.7,2,0,0,0,1,1
 16695,3972,5.0,Retail,17,1,AU,desktop,109.7,0,0,0,0,1,0
@@ -4597,7 +4597,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 19421,3312,5.0,Utilities,9,0,DE,desktop,300.2,1,0,0,0,1,0
 19924,2801,5.0,Grocery,9,3,NG,desktop,118.6,0,0,0,0,1,0
 19951,4716,7.33,Grocery,18,0,CA,desktop,141.7,2,0,0,0,1,0
-3,3618,5.0,Grocery,16,3,JP,tablet,216.5,1,0,0,0,0,1
+3,3618,5.0,Grocery,16,3,JP,tablet,216.5,1,0,0,0,0,0
 34,3218,5.0,Grocery,7,0,AU,mobile,78.2,1,0,0,0,0,0
 67,4622,5.0,Grocery,11,2,US,desktop,239.4,4,0,0,0,0,0
 71,4182,5.0,Retail,11,4,CA,mobile,198.5,0,0,0,0,0,0
@@ -4686,7 +4686,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 1825,4090,5.0,Grocery,14,0,JP,mobile,69.1,2,0,0,0,0,0
 1836,1551,5.0,Retail,9,1,FR,mobile,213.9,0,0,0,0,0,1
 1837,4765,5.0,Retail,18,2,DE,mobile,223.2,0,0,0,0,0,0
-1841,2700,5.0,Retail,8,2,GB,mobile,87.6,1,0,0,0,0,1
+1841,2700,5.0,Retail,8,2,GB,mobile,87.6,1,0,0,0,0,0
 1852,2013,5.0,Grocery,12,1,CA,mobile,345.1,0,0,0,0,0,0
 1859,3096,5.0,Retail,20,0,DE,mobile,240.9,1,0,0,0,0,0
 1881,2539,5.0,Grocery,23,6,US,desktop,350.9,1,0,1,1,0,0
@@ -4819,7 +4819,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 4266,4963,5.0,Retail,10,0,CA,tablet,360.0,1,0,0,0,0,1
 4276,4095,5.0,Retail,8,2,CA,mobile,106.2,1,0,0,0,0,0
 4292,4716,5.0,Retail,12,4,NG,mobile,179.0,2,0,0,0,0,0
-4296,4977,5.0,Retail,21,3,FR,tablet,72.0,1,0,0,0,0,1
+4296,4977,5.0,Retail,21,3,FR,tablet,72.0,1,0,0,0,0,0
 4304,1136,5.0,Retail,10,4,DE,tablet,329.8,1,0,0,0,0,0
 4318,2656,5.0,Grocery,22,4,BR,mobile,555.1,1,0,0,0,0,0
 4356,4295,5.0,Retail,3,6,US,desktop,55.7,2,0,1,1,0,0
@@ -4917,7 +4917,7 @@ transaction_id,customer_id,amount,merchant_category,hour,day_of_week,country,dev
 5922,4189,5.0,Health,13,3,BR,mobile,133.4,2,0,0,0,0,0
 5923,3623,5.0,Utilities,19,4,CA,mobile,103.4,1,0,0,0,0,0
 5935,4351,5.0,Retail,10,1,GB,tablet,802.4,1,0,0,0,0,0
-5979,1823,5.0,Utilities,4,5,US,desktop,43.1,1,0,1,1,0,1
+5979,1823,5.0,Utilities,4,5,US,desktop,43.1,1,0,1,1,0,0
 5998,4916,5.0,Grocery,5,6,US,desktop,145.7,1,0,1,1,0,0
 6006,1979,5.0,Retail,9,0,US,desktop,394.9,5,0,0,0,0,0
 6015,3136,5.0,Retail,12,4,AU,tablet,71.9,0,0,0,0,0,0

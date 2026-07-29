@@ -45,7 +45,7 @@ def build_synthetic_dataset(n_transactions: int = 20_000, seed: int = 42) -> pd.
         + is_new_card * 0.05
         + is_weekend * 0.04
     )
-    fraud_prob = np.clip(0.005 + risk_score, 0.005, 0.18)
+    fraud_prob = np.clip(0.01 + risk_score * 0.9, 0.01, 0.95)
     is_fraud = (rng.random(n_transactions) < fraud_prob).astype(int)
 
     df = pd.DataFrame(

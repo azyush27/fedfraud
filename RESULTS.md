@@ -2,7 +2,7 @@
 
 ## Centralized Baseline
 
-- Precision: 0.1709
-- Recall: 0.5599
-- F1: 0.2618
-- AUC: 0.5281
+- Precision: 0.3865
+- Recall: 0.5811
+- F1: 0.4642
+- AUC: 0.6834
