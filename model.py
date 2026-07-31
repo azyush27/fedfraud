@@ -15,20 +15,28 @@ DATA_PATH = ROOT / "data" / "datasets" / "transactions.csv"
 RESULTS_PATH = ROOT / "RESULTS.md"
 
 
-def load_training_data(path: Path) -> tuple[pd.DataFrame, pd.Series]:
-    """Load the full synthetic dataset and prepare features and labels."""
-    data = pd.read_csv(path)
+def build_feature_matrix(data: pd.DataFrame, feature_columns: list[str] | None = None) -> pd.DataFrame:
+    """Create the engineered feature matrix using the same schema as the centralized baseline."""
+    feature_frame = data.copy()
+    feature_frame["high_amount"] = (feature_frame["amount"] > 900).astype(int)
+    feature_frame["new_card"] = (feature_frame["card_age_days"] < 30).astype(int)
+    feature_frame["high_velocity"] = (feature_frame["velocity"] > 2).astype(int)
 
-    data = data.copy()
-    data["high_amount"] = (data["amount"] > 900).astype(int)
-    data["new_card"] = (data["card_age_days"] < 30).astype(int)
-    data["high_velocity"] = (data["velocity"] > 2).astype(int)
-
-    feature_frame = data.drop(columns=["transaction_id", "customer_id", "is_fraud"])
+    feature_frame = feature_frame.drop(columns=["transaction_id", "customer_id", "is_fraud"], errors="ignore")
     categorical_columns = ["merchant_category", "country", "device_type"]
     encoded_features = pd.get_dummies(feature_frame, columns=categorical_columns, drop_first=False)
     encoded_features = encoded_features.astype(float)
 
+    if feature_columns is not None:
+        encoded_features = encoded_features.reindex(columns=feature_columns, fill_value=0.0)
+
+    return encoded_features
+
+
+def load_training_data(path: Path) -> tuple[pd.DataFrame, pd.Series]:
+    """Load the full synthetic dataset and prepare features and labels."""
+    data = pd.read_csv(path)
+    encoded_features = build_feature_matrix(data)
     target = data["is_fraud"].astype(int)
     return encoded_features, target
 
