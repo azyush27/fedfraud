@@ -1,10 +1,7 @@
 from __future__ import annotations
-
 from pathlib import Path
-
 import numpy as np
 import pandas as pd
-
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data" / "datasets"
@@ -20,7 +17,12 @@ def build_synthetic_dataset(n_transactions: int = 20_000, seed: int = 42) -> pd.
     risky_merchants = ["Travel", "Online", "Food Delivery", "Entertainment"]
 
     customer_ids = rng.integers(1000, 5000, size=n_transactions)
-    amount = np.clip(rng.lognormal(mean=0.6, sigma=0.85, size=n_transactions), 5, 6000)
+    # FIXED (previously mean=0.6, sigma=0.85): that gave a median of ~$1.82,
+    # far below the $5 clip floor, so 88% of "amounts" collapsed to a
+    # constant $5 -- destroying the amount signal and breaking the
+    # high_amount>900 feature (which was always False). mean=4.5, sigma=1.0
+    # gives a realistic median of ~$90 with a long tail up to ~$5700.
+    amount = np.clip(rng.lognormal(mean=4.5, sigma=1.0, size=n_transactions), 5, 6000)
     merchant_category = rng.choice(merchants, size=n_transactions, p=[0.25, 0.15, 0.20, 0.12, 0.10, 0.08, 0.05, 0.05])
     hour = rng.integers(0, 24, size=n_transactions)
     day_of_week = rng.integers(0, 7, size=n_transactions)
@@ -71,13 +73,13 @@ def build_synthetic_dataset(n_transactions: int = 20_000, seed: int = 42) -> pd.
 
 
 def main() -> None:
-    """Generate and save the synthetic dataset."""
     dataset = build_synthetic_dataset()
     output_path = DATA_DIR / "transactions.csv"
     dataset.to_csv(output_path, index=False)
     fraud_rate = dataset["is_fraud"].mean() * 100
     print(f"Generated {len(dataset):,} transactions at {output_path}")
     print(f"Fraud rate in the full dataset: {fraud_rate:.2f}%")
+    print(f"Amount stats -- median: {dataset['amount'].median():.2f}, mean: {dataset['amount'].mean():.2f}")
 
 
 if __name__ == "__main__":

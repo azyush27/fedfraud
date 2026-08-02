@@ -66,6 +66,21 @@ def build_feature_matrix(df: pd.DataFrame) -> tuple[np.ndarray, np.ndarray]:
     return X, y
 
 
+def build_single_feature_vector(record: dict) -> np.ndarray:
+    """Same schema/scaling as build_feature_matrix, for one live transaction
+    at prediction time (no is_fraud label needed/expected)."""
+    df = pd.DataFrame([record])
+    df["high_amount"] = (df["amount"] > 900).astype(int)
+    df["new_card"] = (df["card_age_days"] < 30).astype(int)
+    df["high_velocity"] = (df["velocity"] > 2).astype(int)
+    encoded = pd.get_dummies(df, columns=["merchant_category", "country", "device_type"])
+    for col in FEATURE_COLUMNS:
+        if col not in encoded.columns:
+            encoded[col] = 0
+    X = encoded[FEATURE_COLUMNS].astype(np.float32).to_numpy()
+    return _GLOBAL_SCALER.transform(X).astype(np.float32)
+
+
 def _fit_global_scaler() -> StandardScaler:
     """Fit ONE scaler on the full dataset (not per-bank -- a real bank
     wouldn't be allowed to see other banks' data, but the scaler's
