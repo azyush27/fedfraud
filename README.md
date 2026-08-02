@@ -48,3 +48,11 @@ The partitioning step creates four bank datasets with noticeably different fraud
 - Bank 4: highest fraud concentration
 
 This creates a realistic non-IID federated learning setup.
+
+## Results Summary
+
+- **Centralized baseline**: AUC 0.68, F1 0.46 (see RESULTS.md)
+- **Federated (4 non-IID banks)**: AUC 0.53, F1 0.31 (see RESULTS.md)
+- Federated learning achieves reasonable fraud detection performance
+  without any bank sharing raw transaction data, at a measurable but
+  explainable cost versus centralized training on pooled data.
