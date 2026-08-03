@@ -51,8 +51,52 @@ This creates a realistic non-IID federated learning setup.
 
 ## Results Summary
 
-- **Centralized baseline**: AUC 0.68, F1 0.46 (see RESULTS.md)
-- **Federated (4 non-IID banks)**: AUC 0.53, F1 0.31 (see RESULTS.md)
-- Federated learning achieves reasonable fraud detection performance
-  without any bank sharing raw transaction data, at a measurable but
-  explainable cost versus centralized training on pooled data.
+## Results Summary
+
+- **Centralized baseline**: AUC 0.687, F1 0.464 (all data pooled, no privacy)
+- **Federated (4 non-IID banks, FedAvg)**: AUC 0.696 (pooled-eval, same
+  methodology as baseline), 0.555 (per-bank, weighted average)
+- **Bottom line**: federated learning matches centralized performance while
+  no bank ever shares raw transaction data -- see `RESULTS.md` for the full
+  breakdown, including why two different (both valid) AUC numbers exist for
+  the federated setting.
+
+## Project Structure
+
+```
+fedfraud/
+├── data/
+│   ├── generate.py       # synthetic transaction dataset generator
+│   ├── partition.py      # splits into 4 non-IID "bank" datasets
+│   └── datasets/         # generated CSVs
+├── model.py              # shared model, feature schema, scaler
+├── client.py              # Flower client (one per simulated bank)
+├── server.py              # Flower server (FedAvg strategy)
+├── run_simulation.py     # entrypoint: runs the full federated simulation
+├── api/
+│   ├── main.py            # FastAPI service (train-round, status, predict)
+│   └── schemas.py         # request/response models
+├── RESULTS.md             # full metrics + bugs found & fixed
+├── PRIVACY.md              # what secure aggregation/DP would add
+└── requirements.txt
+```
+
+## Setup & Usage
+
+```bash
+pip install -r requirements.txt
+
+# 1. Generate and partition the dataset
+python data/generate.py
+python data/partition.py
+
+# 2. Train the centralized baseline
+python model.py
+
+# 3. Run the federated learning simulation
+python run_simulation.py
+
+# 4. Start the live API
+uvicorn api.main:app --reload --port 8000
+# then visit http://127.0.0.1:8000/docs
+```
