@@ -53,13 +53,6 @@
     100% { box-shadow: 0 0 0 0 rgba(94,234,212,0); }
   }
 
-  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 40px; font-family: 'IBM Plex Mono', monospace; }
-  footer a { color: var(--signal); text-decoration: none; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .dot.live { animation: none; }
-  }
-
   /* ---- Signature: node graph ---- */
   .graph-section { margin: 40px 0 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 28px; }
   .graph-title-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; flex-wrap: wrap; gap: 8px;}
@@ -71,7 +64,67 @@
   .pulse { fill: var(--signal); filter: drop-shadow(0 0 4px rgba(94,234,212,0.8)); }
   .edge { stroke: var(--line); stroke-width: 1.5; fill: none; }
 
+  /* ---- Stat row ---- */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin: 24px 0; }
+  .stat { background: var(--surface); padding: 20px; }
+  .stat .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-family: 'IBM Plex Mono', monospace; margin-bottom: 8px; }
+  .stat .value { font-family: 'IBM Plex Mono', monospace; font-size: 28px; font-weight: 600; }
+  .stat .value.signal { color: var(--signal); }
+  .stat .delta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* ---- Chart panels ---- */
+  .panels { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin: 8px 0 32px; }
+  @media (max-width: 760px) { .panels { grid-template-columns: 1fr; } }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+  .panel h2 { font-size: 15px; margin-bottom: 2px; }
+  .panel .caption { font-size: 12.5px; color: var(--muted); margin-bottom: 16px; }
+  svg.chart { width: 100%; height: auto; }
+  .axis-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; fill: var(--muted); }
+  .line-path { fill: none; stroke: var(--signal); stroke-width: 2; }
+  .grid-line { stroke: var(--line); stroke-width: 1; }
+  .bar { fill: var(--signal-dim); }
+  .bar.high { fill: var(--alert-dim); }
+  .bar-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; fill: var(--text); }
+
+  /* ---- Comparison table ---- */
+  .compare { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; margin-bottom: 32px; }
+  .compare h2 { font-size: 15px; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 500; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+  td.num, th.num { font-family: 'IBM Plex Mono', monospace; text-align: right; }
+  tr:last-child td { border-bottom: none; }
+  .tag { display: inline-block; font-size: 10px; font-family: 'IBM Plex Mono', monospace; padding: 2px 7px; border-radius: 4px; background: var(--signal-dim); color: var(--signal); margin-left: 6px; }
+
+  /* ---- Predict panel ---- */
+  .predict { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+  .predict h2 { font-size: 15px; margin-bottom: 4px; }
+  .predict .caption { font-size: 12.5px; color: var(--muted); margin-bottom: 18px; }
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .field label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; font-family: 'IBM Plex Mono', monospace; }
+  .field input, .field select {
+    width: 100%; background: var(--surface-2); border: 1px solid var(--line); color: var(--text);
+    padding: 8px 10px; border-radius: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 13px;
+  }
+  .field input:focus, .field select:focus, button:focus-visible { outline: 2px solid var(--signal); outline-offset: 1px; }
+  button.run {
+    background: var(--signal); color: #0F1417; border: none; font-weight: 600;
+    padding: 10px 20px; border-radius: 6px; font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-size: 14px; cursor: pointer; letter-spacing: 0.02em;
+  }
+  button.run:hover { background: #7FF3DC; }
+  .result { margin-top: 18px; padding: 16px; border-radius: 8px; border: 1px solid var(--line); display: none; }
+  .result.show { display: block; }
+  .result.fraud { border-color: var(--alert-dim); background: rgba(242,99,122,0.08); }
+  .result.clean { border-color: var(--signal-dim); background: rgba(94,234,212,0.06); }
+  .result .prob { font-family: 'IBM Plex Mono', monospace; font-size: 24px; font-weight: 600; }
+  .result .verdict { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 40px; font-family: 'IBM Plex Mono', monospace; }
+  footer a { color: var(--signal); text-decoration: none; }
+
   @media (prefers-reduced-motion: reduce) {
+    .dot.live { animation: none; }
     .pulse { animation: none !important; }
   }
 </style>
@@ -85,9 +138,8 @@
       <h1>Signal Exchange</h1>
       <p class="sub">Four banks train one fraud model together. Only weight updates cross the wire — never a transaction.</p>
     </div>
-    <span class="status-pill"><span class="dot" id="statusDot"></span><span id="statusText">dashboard scaffold</span></span>
+    <span class="status-pill"><span class="dot" id="statusDot"></span><span id="statusText">checking backend…</span></span>
   </header>
-
 
   <section class="graph-section">
     <div class="graph-title-row">
@@ -95,11 +147,13 @@
       <span class="round-counter">Round <span id="roundNum" class="num">15</span> / 15</span>
     </div>
     <svg id="graph" viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of four bank nodes exchanging model weights with a central aggregator">
+      <!-- edges -->
       <path class="edge" d="M 450,160 L 150,60" />
       <path class="edge" d="M 450,160 L 750,60" />
       <path class="edge" d="M 450,160 L 150,260" />
       <path class="edge" d="M 450,160 L 750,260" />
 
+      <!-- pulses (animated along edges) -->
       <circle class="pulse" r="4"><animateMotion dur="2.4s" repeatCount="indefinite" path="M 150,60 L 450,160" /></circle>
       <circle class="pulse" r="4"><animateMotion dur="2.4s" begin="0.3s" repeatCount="indefinite" path="M 750,60 L 450,160" /></circle>
       <circle class="pulse" r="4"><animateMotion dur="2.4s" begin="0.6s" repeatCount="indefinite" path="M 150,260 L 450,160" /></circle>
@@ -109,10 +163,12 @@
       <circle class="pulse" r="4" opacity="0.7"><animateMotion dur="2.4s" begin="1.8s" repeatCount="indefinite" path="M 450,160 L 150,260" /></circle>
       <circle class="pulse" r="4" opacity="0.7"><animateMotion dur="2.4s" begin="2.1s" repeatCount="indefinite" path="M 450,160 L 750,260" /></circle>
 
+      <!-- aggregator -->
       <circle cx="450" cy="160" r="34" fill="#1E2830" stroke="#5EEAD4" stroke-width="1.5" />
       <text x="450" y="156" text-anchor="middle" class="node-label">GLOBAL</text>
       <text x="450" y="172" text-anchor="middle" class="node-label">MODEL</text>
 
+      <!-- bank nodes -->
       <g id="node-1">
         <circle cx="150" cy="60" r="26" fill="#171E23" stroke="#26323B" stroke-width="1.5" />
         <text x="150" y="100" text-anchor="middle" class="node-label">BANK 1</text>
@@ -136,7 +192,227 @@
     </svg>
   </section>
 
+  <section class="stats">
+    <div class="stat">
+      <div class="label">Centralized AUC</div>
+      <div class="value" id="statCentralAuc">0.687</div>
+      <div class="delta">all data pooled</div>
+    </div>
+    <div class="stat">
+      <div class="label">Federated AUC (pooled-eval)</div>
+      <div class="value signal" id="statFedAuc">0.696</div>
+      <div class="delta">matches centralized</div>
+    </div>
+    <div class="stat">
+      <div class="label">Federated AUC (per-bank)</div>
+      <div class="value" id="statPerBankAuc">0.555</div>
+      <div class="delta">realistic single-bank view</div>
+    </div>
+    <div class="stat">
+      <div class="label">Raw data shared</div>
+      <div class="value signal">0</div>
+      <div class="delta">rows, ever</div>
+    </div>
+  </section>
+
+  <div class="panels">
+    <div class="panel">
+      <h2>AUC by training round</h2>
+      <p class="caption">Pooled validation evaluation, federated FedAvg</p>
+      <svg class="chart" id="lineChart" viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+    <div class="panel">
+      <h2>Fraud rate by bank</h2>
+      <p class="caption">Non-IID split, sorted by risk score</p>
+      <svg class="chart" id="barChart" viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+  </div>
+
+  <div class="compare">
+    <h2>Centralized vs. federated <span class="tag">same methodology</span></h2>
+    <table>
+      <thead><tr><th>Setting</th><th class="num">AUC</th><th class="num">F1</th><th class="num">Precision</th><th class="num">Recall</th></tr></thead>
+      <tbody>
+        <tr><td>Centralized (pooled)</td><td class="num">0.687</td><td class="num">0.464</td><td class="num">0.387</td><td class="num">0.581</td></tr>
+        <tr><td>Federated (pooled-eval)</td><td class="num">0.696</td><td class="num">0.490</td><td class="num">0.370</td><td class="num">0.723</td></tr>
+        <tr><td>Federated (per-bank avg)</td><td class="num">0.555</td><td class="num">0.313</td><td class="num">0.250</td><td class="num">0.506</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="predict">
+    <h2>Try a live prediction</h2>
+    <p class="caption">Sends one transaction to the running FastAPI backend (<span class="mono">/predict</span>). Falls back to a saved example if the API isn't running.</p>
+    <div class="form-grid">
+      <div class="field"><label>Amount ($)</label><input id="f-amount" type="number" value="2500" /></div>
+      <div class="field"><label>Merchant</label>
+        <select id="f-merchant">
+          <option>Travel</option><option>Grocery</option><option>Retail</option><option>Online</option>
+          <option>Food Delivery</option><option>Entertainment</option><option>Utilities</option><option>Health</option>
+        </select>
+      </div>
+      <div class="field"><label>Hour (0–23)</label><input id="f-hour" type="number" value="2" /></div>
+      <div class="field"><label>Day of week (0–6)</label><input id="f-dow" type="number" value="6" /></div>
+      <div class="field"><label>Country</label>
+        <select id="f-country">
+          <option>NG</option><option>US</option><option>CA</option><option>GB</option><option>DE</option>
+          <option>FR</option><option>AU</option><option>JP</option><option>BR</option>
+        </select>
+      </div>
+      <div class="field"><label>Device</label>
+        <select id="f-device"><option>mobile</option><option>desktop</option><option>tablet</option></select>
+      </div>
+      <div class="field"><label>Card age (days)</label><input id="f-cardage" type="number" value="5" /></div>
+      <div class="field"><label>Velocity</label><input id="f-velocity" type="number" value="5" /></div>
+      <div class="field"><label>International?</label><select id="f-intl"><option value="1">Yes</option><option value="0">No</option></select></div>
+      <div class="field"><label>Weekend?</label><select id="f-weekend"><option value="1">Yes</option><option value="0">No</option></select></div>
+      <div class="field"><label>Night?</label><select id="f-night"><option value="1">Yes</option><option value="0">No</option></select></div>
+      <div class="field"><label>New card?</label><select id="f-newcard"><option value="1">Yes</option><option value="0">No</option></select></div>
+    </div>
+    <button class="run" id="runPredict">Run prediction</button>
+    <div class="result" id="predictResult">
+      <div class="prob" id="predictProb">—</div>
+      <div class="verdict" id="predictVerdict">—</div>
+    </div>
+  </div>
+
   <footer>fedfraud · HackNexus'26 · <a href="http://127.0.0.1:8000/docs" target="_blank">API docs</a></footer>
 </div>
+
+<script>
+const API_BASE = "http://127.0.0.1:8000";
+
+// Fallback data = your actual verified results, so this page still works
+// standalone even if the FastAPI backend isn't running.
+const FALLBACK_HISTORY = [
+  {round:1, auc:0.6891}, {round:2, auc:0.6951}, {round:3, auc:0.6966}, {round:4, auc:0.6971},
+  {round:5, auc:0.6973}, {round:6, auc:0.6973}, {round:7, auc:0.6973}, {round:8, auc:0.6974},
+  {round:9, auc:0.6974}, {round:10, auc:0.6974}, {round:11, auc:0.6974}, {round:12, auc:0.6974},
+  {round:13, auc:0.6974}, {round:14, auc:0.6974}, {round:15, auc:0.6974}
+];
+const FALLBACK_BANK_RATES = {bank_1:0.088, bank_2:0.196, bank_3:0.296, bank_4:0.425};
+
+let liveMode = false;
+
+async function tryFetchStatus() {
+  try {
+    const res = await fetch(API_BASE + "/status", {signal: AbortSignal.timeout(2000)});
+    if (!res.ok) throw new Error("bad status");
+    const data = await res.json();
+    if (!data.history || data.history.length === 0) throw new Error("no history yet");
+    liveMode = true;
+    document.getElementById("statusDot").classList.add("live");
+    document.getElementById("statusText").textContent = "live · connected to API";
+    return data.history.map(h => ({round: h.round, auc: h.global_metrics.auc, banks: h.per_bank_fraud_rate}));
+  } catch (e) {
+    document.getElementById("statusText").textContent = "offline · showing saved results";
+    return null;
+  }
+}
+
+function drawLineChart(history) {
+  const svg = document.getElementById("lineChart");
+  const w = 560, h = 220, padL = 38, padR = 12, padT = 12, padB = 28;
+  const rounds = history.map(d => d.round);
+  const aucs = history.map(d => d.auc);
+  const minY = Math.min(...aucs) - 0.02, maxY = Math.max(...aucs) + 0.02;
+  const x = r => padL + (r - 1) / (Math.max(...rounds) - 1) * (w - padL - padR);
+  const y = v => h - padB - (v - minY) / (maxY - minY) * (h - padT - padB);
+
+  let gridLines = "";
+  for (let i = 0; i <= 3; i++) {
+    const val = minY + (maxY - minY) * i / 3;
+    gridLines += `<line class="grid-line" x1="${padL}" y1="${y(val)}" x2="${w-padR}" y2="${y(val)}" />`;
+    gridLines += `<text class="axis-label" x="${padL-6}" y="${y(val)+3}" text-anchor="end">${val.toFixed(2)}</text>`;
+  }
+  let xLabels = "";
+  [1, 5, 10, 15].forEach(r => {
+    if (r <= Math.max(...rounds)) xLabels += `<text class="axis-label" x="${x(r)}" y="${h-8}" text-anchor="middle">R${r}</text>`;
+  });
+  const pathD = rounds.map((r,i) => `${i===0?'M':'L'} ${x(r)},${y(aucs[i])}`).join(' ');
+  const dots = rounds.map((r,i) => `<circle cx="${x(r)}" cy="${y(aucs[i])}" r="2.5" fill="#5EEAD4" />`).join('');
+
+  svg.innerHTML = gridLines + xLabels + `<path class="line-path" d="${pathD}" />` + dots;
+}
+
+function drawBarChart(rates) {
+  const svg = document.getElementById("barChart");
+  const w = 280, h = 220, padL = 12, padR = 12, padT = 12, padB = 30;
+  const keys = Object.keys(rates);
+  const barW = (w - padL - padR) / keys.length - 10;
+  const maxRate = 0.5;
+  let bars = "";
+  keys.forEach((k, i) => {
+    const val = rates[k];
+    const barH = (val / maxRate) * (h - padT - padB);
+    const bx = padL + i * ((w - padL - padR) / keys.length) + 5;
+    const by = h - padB - barH;
+    const cls = val > 0.3 ? "bar high" : "bar";
+    bars += `<rect class="${cls}" x="${bx}" y="${by}" width="${barW}" height="${barH}" rx="3" />`;
+    bars += `<text class="bar-label" x="${bx + barW/2}" y="${by - 6}" text-anchor="middle">${(val*100).toFixed(1)}%</text>`;
+    bars += `<text class="axis-label" x="${bx + barW/2}" y="${h-10}" text-anchor="middle">${k.replace('bank_','B')}</text>`;
+  });
+  svg.innerHTML = bars;
+}
+
+function updateNodeLabels(rates) {
+  const map = {bank_1: 'rate-1', bank_2: 'rate-2', bank_3: 'rate-3', bank_4: 'rate-4'};
+  Object.entries(rates).forEach(([k, v]) => {
+    const el = document.getElementById(map[k]);
+    if (el) el.textContent = (v*100).toFixed(1) + '%';
+  });
+}
+
+async function init() {
+  const liveHistory = await tryFetchStatus();
+  const history = liveHistory || FALLBACK_HISTORY;
+  const bankRates = (liveHistory && liveHistory[liveHistory.length-1].banks) || FALLBACK_BANK_RATES;
+
+  document.getElementById("roundNum").textContent = history[history.length-1].round;
+  document.getElementById("statFedAuc").textContent = history[history.length-1].auc.toFixed(3);
+
+  drawLineChart(history);
+  drawBarChart(bankRates);
+  updateNodeLabels(bankRates);
+}
+
+document.getElementById("runPredict").addEventListener("click", async () => {
+  const payload = {
+    amount: parseFloat(document.getElementById("f-amount").value),
+    merchant_category: document.getElementById("f-merchant").value,
+    hour: parseInt(document.getElementById("f-hour").value),
+    day_of_week: parseInt(document.getElementById("f-dow").value),
+    country: document.getElementById("f-country").value,
+    device_type: document.getElementById("f-device").value,
+    card_age_days: parseFloat(document.getElementById("f-cardage").value),
+    velocity: parseInt(document.getElementById("f-velocity").value),
+    is_international: parseInt(document.getElementById("f-intl").value),
+    is_weekend: parseInt(document.getElementById("f-weekend").value),
+    is_night: parseInt(document.getElementById("f-night").value),
+    is_new_card: parseInt(document.getElementById("f-newcard").value),
+  };
+  const resultBox = document.getElementById("predictResult");
+  const probEl = document.getElementById("predictProb");
+  const verdictEl = document.getElementById("predictVerdict");
+
+  try {
+    const res = await fetch(API_BASE + "/predict", {
+      method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error("predict failed — has /train-round been called yet?");
+    const data = await res.json();
+    resultBox.classList.remove("fraud","clean");
+    resultBox.classList.add(data.is_fraud ? "fraud" : "clean", "show");
+    probEl.textContent = (data.fraud_probability * 100).toFixed(1) + "% fraud probability";
+    verdictEl.textContent = (data.is_fraud ? "Flagged as fraud" : "Looks legitimate") + " · round " + data.round_used;
+  } catch (e) {
+    resultBox.classList.add("show");
+    probEl.textContent = "API not reachable";
+    verdictEl.textContent = "Start the backend: uvicorn api.main:app --reload --port 8000, then call /train-round at least once.";
+  }
+});
+
+init();
+</script>
 </body>
 </html>
