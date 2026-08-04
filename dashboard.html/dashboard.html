@@ -59,6 +59,21 @@
   @media (prefers-reduced-motion: reduce) {
     .dot.live { animation: none; }
   }
+
+  /* ---- Signature: node graph ---- */
+  .graph-section { margin: 40px 0 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 28px; }
+  .graph-title-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; flex-wrap: wrap; gap: 8px;}
+  .graph-title { font-size: 13px; color: var(--muted); font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; }
+  .round-counter { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--signal); }
+  svg#graph { width: 100%; height: auto; display: block; margin-top: 8px; }
+  .node-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; fill: var(--muted); }
+  .node-rate { font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600; fill: var(--text); }
+  .pulse { fill: var(--signal); filter: drop-shadow(0 0 4px rgba(94,234,212,0.8)); }
+  .edge { stroke: var(--line); stroke-width: 1.5; fill: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulse { animation: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -72,6 +87,54 @@
     </div>
     <span class="status-pill"><span class="dot" id="statusDot"></span><span id="statusText">dashboard scaffold</span></span>
   </header>
+
+
+  <section class="graph-section">
+    <div class="graph-title-row">
+      <span class="graph-title">Federation topology</span>
+      <span class="round-counter">Round <span id="roundNum" class="num">15</span> / 15</span>
+    </div>
+    <svg id="graph" viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of four bank nodes exchanging model weights with a central aggregator">
+      <path class="edge" d="M 450,160 L 150,60" />
+      <path class="edge" d="M 450,160 L 750,60" />
+      <path class="edge" d="M 450,160 L 150,260" />
+      <path class="edge" d="M 450,160 L 750,260" />
+
+      <circle class="pulse" r="4"><animateMotion dur="2.4s" repeatCount="indefinite" path="M 150,60 L 450,160" /></circle>
+      <circle class="pulse" r="4"><animateMotion dur="2.4s" begin="0.3s" repeatCount="indefinite" path="M 750,60 L 450,160" /></circle>
+      <circle class="pulse" r="4"><animateMotion dur="2.4s" begin="0.6s" repeatCount="indefinite" path="M 150,260 L 450,160" /></circle>
+      <circle class="pulse" r="4"><animateMotion dur="2.4s" begin="0.9s" repeatCount="indefinite" path="M 750,260 L 450,160" /></circle>
+      <circle class="pulse" r="4" opacity="0.7"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M 450,160 L 150,60" /></circle>
+      <circle class="pulse" r="4" opacity="0.7"><animateMotion dur="2.4s" begin="1.5s" repeatCount="indefinite" path="M 450,160 L 750,60" /></circle>
+      <circle class="pulse" r="4" opacity="0.7"><animateMotion dur="2.4s" begin="1.8s" repeatCount="indefinite" path="M 450,160 L 150,260" /></circle>
+      <circle class="pulse" r="4" opacity="0.7"><animateMotion dur="2.4s" begin="2.1s" repeatCount="indefinite" path="M 450,160 L 750,260" /></circle>
+
+      <circle cx="450" cy="160" r="34" fill="#1E2830" stroke="#5EEAD4" stroke-width="1.5" />
+      <text x="450" y="156" text-anchor="middle" class="node-label">GLOBAL</text>
+      <text x="450" y="172" text-anchor="middle" class="node-label">MODEL</text>
+
+      <g id="node-1">
+        <circle cx="150" cy="60" r="26" fill="#171E23" stroke="#26323B" stroke-width="1.5" />
+        <text x="150" y="100" text-anchor="middle" class="node-label">BANK 1</text>
+        <text x="150" y="65" text-anchor="middle" class="node-rate" id="rate-1">8.8%</text>
+      </g>
+      <g id="node-2">
+        <circle cx="750" cy="60" r="26" fill="#171E23" stroke="#26323B" stroke-width="1.5" />
+        <text x="750" y="100" text-anchor="middle" class="node-label">BANK 2</text>
+        <text x="750" y="65" text-anchor="middle" class="node-rate" id="rate-2">19.6%</text>
+      </g>
+      <g id="node-3">
+        <circle cx="150" cy="260" r="26" fill="#171E23" stroke="#26323B" stroke-width="1.5" />
+        <text x="150" y="225" text-anchor="middle" class="node-label">BANK 3</text>
+        <text x="150" y="266" text-anchor="middle" class="node-rate" id="rate-3">29.6%</text>
+      </g>
+      <g id="node-4">
+        <circle cx="750" cy="260" r="26" fill="#171E23" stroke="#26323B" stroke-width="1.5" />
+        <text x="750" y="225" text-anchor="middle" class="node-label">BANK 4</text>
+        <text x="750" y="266" text-anchor="middle" class="node-rate" id="rate-4">42.5%</text>
+      </g>
+    </svg>
+  </section>
 
   <footer>fedfraud · HackNexus'26 · <a href="http://127.0.0.1:8000/docs" target="_blank">API docs</a></footer>
 </div>
