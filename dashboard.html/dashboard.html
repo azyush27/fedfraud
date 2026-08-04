@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FedFraud — Signal Exchange</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0F1417;
+    --surface: #171E23;
+    --surface-2: #1E2830;
+    --line: #26323B;
+    --text: #E8EDF0;
+    --muted: #8A9BA8;
+    --signal: #5EEAD4;
+    --signal-dim: #2B6F68;
+    --alert: #F2637A;
+    --alert-dim: #6B3540;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 48px 24px 96px; }
+
+  h1, h2, .display {
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    letter-spacing: 0.01em;
+  }
+  .mono, .num { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+
+  header.top { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 12px; }
+  .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--signal); }
+  h1 { font-size: 34px; font-weight: 700; margin: 6px 0 4px; }
+  .sub { color: var(--muted); font-size: 15px; max-width: 60ch; }
+
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted);
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); }
+  .dot.live { background: var(--signal); box-shadow: 0 0 0 0 rgba(94,234,212,0.6); animation: pulse-dot 2s infinite; }
+  @keyframes pulse-dot {
+    0% { box-shadow: 0 0 0 0 rgba(94,234,212,0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(94,234,212,0); }
+    100% { box-shadow: 0 0 0 0 rgba(94,234,212,0); }
+  }
+
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 40px; font-family: 'IBM Plex Mono', monospace; }
+  footer a { color: var(--signal); text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dot.live { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <div class="eyebrow">FedFraud · Milestone 5</div>
+      <h1>Signal Exchange</h1>
+      <p class="sub">Four banks train one fraud model together. Only weight updates cross the wire — never a transaction.</p>
+    </div>
+    <span class="status-pill"><span class="dot" id="statusDot"></span><span id="statusText">dashboard scaffold</span></span>
+  </header>
+
+  <footer>fedfraud · HackNexus'26 · <a href="http://127.0.0.1:8000/docs" target="_blank">API docs</a></footer>
+</div>
+</body>
+</html>
