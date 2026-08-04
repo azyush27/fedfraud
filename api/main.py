@@ -20,6 +20,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 import pandas as pd
 
@@ -30,6 +31,19 @@ from model import (
 from api.schemas import TrainRoundResponse, StatusResponse, PredictRequest, PredictResponse
 
 app = FastAPI(title="Federated Fraud Detection API", version="1.0.0")
+
+# Dashboard.html is opened as a local file (file:// origin) and calls this
+# API from the browser -- that's a cross-origin request, so the browser
+# sends an OPTIONS preflight before the real POST/GET. Without this
+# middleware, FastAPI has no OPTIONS handler at all and returns 405,
+# which silently blocks every /predict and /train-round call from the
+# dashboard while curl/Swagger UI (same-origin, no preflight) work fine.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data" / "datasets"
